@@ -1,0 +1,1894 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/" >
+    <!ENTITY page "http://dbpedia.org/page/" >
+    <!ENTITY ontology "http://dbpedia.org/ontology/" >
+    <!ENTITY ontology2 "http://dbpedia.org/ontology/#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY www "http://www.movieontology.org/2009/11/09/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY movieontology2 "http://www.movieontology.org/2009/11/09/movieontology.owl#" >
+]>
+
+
+<rdf:RDF xmlns="&www;movieontology.owl#"
+     xml:base="&www;movieontology.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:movieontology2="&www;movieontology.owl#"
+     xmlns:foaf="http://xmlns.com/foaf/"
+     xmlns:www="http://www.movieontology.org/2009/11/09/"
+     xmlns:ontology="http://dbpedia.org/ontology/"
+     xmlns:ontology2="&ontology;#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:page="http://dbpedia.org/page/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="&www;movieontology.owl">
+        <dc:date rdf:datatype="&xsd;string">20.01.2010</dc:date>
+        <dc:publisher rdf:datatype="&xsd;string">Amancio Bouza</dc:publisher>
+        <dc:creator rdf:datatype="&xsd;string">Amancio Bouza</dc:creator>
+        <dc:contributor rdf:datatype="&xsd;string">Amancio Bouza</dc:contributor>
+        <dc:description rdf:datatype="&xsd;string">MO - Movie ontology</dc:description>
+        <owl:imports rdf:resource="http://dbpedia.org/ontology/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/hasBeenDirectedBy -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasBeenDirectedBy">
+        <owl:inverseOf rdf:resource="&ontology;hasDirectedActor"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/hasDirectedActor -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasDirectedActor">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#isDirectorOf"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#hasActor"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#belongsToGenre -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#belongsToGenre">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Genre"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#containsCountry -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#containsCountry">
+        <rdfs:range rdf:resource="&ontology;Country"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#enablesConsumptionOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#enablesConsumptionOf">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isConsumableAs"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasActor -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasActor">
+        <rdfs:range rdf:resource="&ontology;Actor"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isActorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasColor -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasColor">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Colorinfo"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isColorOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasComposer -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasComposer">
+        <rdfs:range rdf:resource="&ontology;Musical_Artist"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isComposerIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasCostumeDesigner -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasCostumeDesigner">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Costume_Designer"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isCostumeDesignerIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasDirector -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasDirector">
+        <rdfs:range rdf:resource="&page;Film_Director"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isDirectorOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasEditor -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasEditor">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Editor"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isEditorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasFemaleActor -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasFemaleActor">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:subPropertyOf rdf:resource="&www;movieontology.owl#hasActor"/>
+        <owl:propertyDisjointWith rdf:resource="&www;movieontology.owl#hasMaleActor"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isFemaleActorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasFilmLocation -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasFilmLocation">
+        <rdfs:range rdf:resource="&page;Place"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasMaleActor -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasMaleActor">
+        <rdfs:range rdf:resource="&ontology;MaleActor"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:subPropertyOf rdf:resource="&www;movieontology.owl#hasActor"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isMaleActorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasProducer -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasProducer">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Producer"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isProducerOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasReleasingCountry -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasReleasingCountry">
+        <rdfs:range rdf:resource="&ontology;Country"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isReleasingCountryOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasSoundmix -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasSoundmix">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Sound_Mix"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isSoundmixOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasTranslatedMovie -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasTranslatedMovie">
+        <rdfs:domain rdf:resource="&ontology;Language"/>
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isTranslatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasWriter -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#hasWriter">
+        <rdfs:range rdf:resource="&ontology;Writer"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isWriterOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isActorIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isActorIn">
+        <rdfs:domain rdf:resource="&ontology;Actor"/>
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:subPropertyOf rdf:resource="&www;movieontology.owl#isActorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isAwardOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isAwardOf">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Award"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isAwardedWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isAwardedWith -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isAwardedWith">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Award"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isCertificationOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isCertificationOf">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Certification"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#isCertifiedWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isCertifiedWith -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isCertifiedWith">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Certification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isColorOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isColorOf">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Colorinfo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isComposerIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isComposerIn">
+        <rdfs:domain rdf:resource="&ontology;Musical_Artist"/>
+        <rdfs:range rdf:resource="&www;Movie"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isConsumableAs -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isConsumableAs">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isCostumeDesignerIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isCostumeDesignerIn">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Costume_Designer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isDirectorOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isDirectorOf">
+        <rdfs:domain rdf:resource="&page;Film_Director"/>
+        <rdfs:range rdf:resource="&www;Movie"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isEditorIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isEditorIn">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Editor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isFemaleActorIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isFemaleActorIn">
+        <rdfs:subPropertyOf rdf:resource="&www;movieontology.owl#isActorIn"/>
+        <owl:propertyDisjointWith rdf:resource="&www;movieontology.owl#isMaleActorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isFilmLocationOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isFilmLocationOf">
+        <rdfs:domain rdf:resource="&page;Place"/>
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#hasFilmLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isGenreOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isGenreOf">
+        <owl:inverseOf rdf:resource="&www;movieontology.owl#belongsToGenre"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isMaleActorIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isMaleActorIn">
+        <rdfs:subPropertyOf rdf:resource="&www;movieontology.owl#isActorIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isProducerOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isProducerOf">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Producer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isReleasingCountryOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isReleasingCountryOf">
+        <rdfs:domain rdf:resource="&ontology;Country"/>
+        <rdfs:range rdf:resource="&www;Movie"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isRoleIn -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isRoleIn">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isSoundmixOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isSoundmixOf">
+        <rdfs:range rdf:resource="&www;Movie"/>
+        <rdfs:domain rdf:resource="&www;movieontology.owl#Sound_Mix"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isTranslatedTo -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isTranslatedTo">
+        <rdfs:range rdf:resource="&ontology;Language"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isWriterOf -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#isWriterOf"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#nominatedFor -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#nominatedFor">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Award"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#partOfTerritory -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#partOfTerritory">
+        <rdfs:domain rdf:resource="&ontology;Country"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#playedRole -->
+
+    <owl:ObjectProperty rdf:about="&www;movieontology.owl#playedRole">
+        <rdfs:domain rdf:resource="&ontology;Actor"/>
+        <rdfs:range rdf:resource="&www;movieontology.owl#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasName -->
+
+    <owl:DatatypeProperty rdf:about="&www;movieontology.owl#hasName">
+        <rdfs:isDefinedBy rdf:resource="http://dbpedia.org/ontology/"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#imdbrating -->
+
+    <owl:DatatypeProperty rdf:about="&www;movieontology.owl#imdbrating">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#releasedate -->
+
+    <owl:DatatypeProperty rdf:about="&www;movieontology.owl#releasedate">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#runtime -->
+
+    <owl:DatatypeProperty rdf:about="&www;movieontology.owl#runtime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#title -->
+
+    <owl:DatatypeProperty rdf:about="&www;movieontology.owl#title">
+        <rdfs:domain rdf:resource="&www;Movie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Actor -->
+
+    <owl:Class rdf:about="&ontology;Actor">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Country -->
+
+    <owl:Class rdf:about="&ontology;Country"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/FemaleActor -->
+
+    <owl:Class rdf:about="&ontology;FemaleActor">
+        <rdfs:subClassOf rdf:resource="&ontology;Actor"/>
+        <owl:disjointWith rdf:resource="&ontology;MaleActor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Language -->
+
+    <owl:Class rdf:about="&ontology;Language">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Presentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/MaleActor -->
+
+    <owl:Class rdf:about="&ontology;MaleActor">
+        <rdfs:subClassOf rdf:resource="&ontology;Actor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Musical_Artist -->
+
+    <owl:Class rdf:about="&ontology;Musical_Artist">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Person -->
+
+    <owl:Class rdf:about="&ontology;Person"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Writer -->
+
+    <owl:Class rdf:about="&ontology;Writer">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/page/Film_Director -->
+
+    <owl:Class rdf:about="&page;Film_Director">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/page/Place -->
+
+    <owl:Class rdf:about="&page;Place"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/Movie -->
+
+    <owl:Class rdf:about="&www;Movie"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Actionreach -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Actionreach">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Africa -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Africa">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#America -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#America">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Asia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Asia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Australia_and_New_Zealand -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Australia_and_New_Zealand">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Oceania"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Award -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Award"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Brute_Action -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Brute_Action">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Actionreach"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Caribbean -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Caribbean">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#America"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Central_America -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Central_America">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#LatinAmerica"/>
+        <owl:disjointWith rdf:resource="&www;movieontology.owl#South_America"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Central_Asia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Central_Asia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Asia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Certification -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Certification"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Colorinfo -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Colorinfo">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Presentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Costume_Designer -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Costume_Designer">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Documentarial_Information -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Documentarial_Information">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Special-Info"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Eastern_Africa -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Eastern_Africa">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Africa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Eastern_Asia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Eastern_Asia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Asia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Eastern_Europe -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Eastern_Europe">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Europe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Editor -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Editor">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Entertaining_Information -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Entertaining_Information">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Entertainment -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Entertainment">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Europe -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Europe">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Experience -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Experience">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Fast-Info -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Fast-Info">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Information"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Fun -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Fun">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#SocialActive"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Genre -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Genre"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Heavy_Sensible -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Heavy_Sensible">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Sensible"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Historical_Information -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Historical_Information">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Documentarial_Information"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Imaginational_Entertainment -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Imaginational_Entertainment">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Info-TV -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Info-TV">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Fast-Info"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Information -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Information">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Intelectual_Entertainment -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Intelectual_Entertainment">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Experience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Kids -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Kids">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#SocialActive"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#LatinAmerica -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#LatinAmerica">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#America"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Logical_Thrilling -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Logical_Thrilling">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Thrilling"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Love -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Love">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Sensible"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Melanesia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Melanesia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Oceania"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Micronesia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Micronesia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Oceania"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Middle_Africa -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Middle_Africa">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Africa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Musical_Entertainment -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Musical_Entertainment">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Intelectual_Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Name -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Name"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Northern_Africa -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Northern_Africa">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Africa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Northern_America -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Northern_America">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#America"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Northern_Europe -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Northern_Europe">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Europe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Oceania -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Oceania">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Territory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Old_Action -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Old_Action">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Actionreach"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Online_retailer -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Online_retailer"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Polynesia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Polynesia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Oceania"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Porn -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Porn">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Experience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Presentation -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Presentation"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Producer -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Producer">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Production_Company -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Production_Company"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Role -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Role"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#SciFi_and_Fantasy -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#SciFi_and_Fantasy">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Imaginational_Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Sensible -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Sensible">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Sensible_Thrilling -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Sensible_Thrilling">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Thrilling"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#SocialActive -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#SocialActive">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Sound_Mix -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Sound_Mix">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Presentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#South_America -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#South_America">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#LatinAmerica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Southeastern_Asia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Southeastern_Asia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Asia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Southern_Africa -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Southern_Africa">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Africa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Southern_Asia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Southern_Asia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Asia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Southern_Europe -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Southern_Europe">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Europe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Special-Info -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Special-Info">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Information"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#TV-Entertainment -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#TV-Entertainment">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Experience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Territory -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Territory"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Thrilling -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Thrilling">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Imaginational_Entertainment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Western_Africa -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Western_Africa">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Africa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Western_Asia -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Western_Asia">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Asia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Western_Europe -->
+
+    <owl:Class rdf:about="&www;movieontology.owl#Western_Europe">
+        <rdfs:subClassOf rdf:resource="&www;movieontology.owl#Europe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Karen_Blixen -->
+
+    <owl:NamedIndividual rdf:about="&ontology;Karen_Blixen">
+        <rdf:type rdf:resource="&www;movieontology.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Meryl_Streep -->
+
+    <owl:NamedIndividual rdf:about="&ontology;Meryl_Streep">
+        <rdf:type rdf:resource="&ontology;FemaleActor"/>
+        <hasName rdf:datatype="&xsd;string">Meryl Streep</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Out_of_Africa -->
+
+    <owl:NamedIndividual rdf:about="&ontology;Out_of_Africa">
+        <rdf:type rdf:resource="&www;Movie"/>
+        <hasFemaleActor rdf:resource="&ontology;Meryl_Streep"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Action -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Action">
+        <rdf:type rdf:resource="&www;movieontology.owl#Brute_Action"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Adult -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Adult">
+        <rdf:type rdf:resource="&www;movieontology.owl#Porn"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Adventure -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Adventure">
+        <rdf:type rdf:resource="&www;movieontology.owl#Actionreach"/>
+        <rdf:type rdf:resource="&www;movieontology.owl#Imaginational_Entertainment"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Amazon.com_retailer -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Amazon.com_retailer">
+        <rdf:type rdf:resource="&www;movieontology.owl#Online_retailer"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Animation -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Animation">
+        <rdf:type rdf:resource="&www;movieontology.owl#Fun"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Apocalypse_Now -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Apocalypse_Now">
+        <rdf:type rdf:resource="&www;Movie"/>
+        <releasedate rdf:datatype="&xsd;date">05/07/1979</releasedate>
+        <title>Apocalypse Now</title>
+        <hasMaleActor rdf:resource="&www;movieontology.owl#Martin_Sheen"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#BAFTA_Film_Award -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#BAFTA_Film_Award">
+        <rdf:type rdf:resource="&www;movieontology.owl#Award"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Biography -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Biography">
+        <rdf:type rdf:resource="&www;movieontology.owl#Documentarial_Information"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Black_and_White -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Black_and_White">
+        <rdf:type rdf:resource="&www;movieontology.owl#Colorinfo"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Blockbuster.com_retailer -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Blockbuster.com_retailer">
+        <rdf:type rdf:resource="&www;movieontology.owl#Online_retailer"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Bo_Goldman -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Bo_Goldman">
+        <hasName>Bo Goldman</hasName>
+        <isWriterOf rdf:resource="&www;movieontology.owl#One_Flew_Over_the_Cuckoos_Nest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Brunei_Darussalam -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Brunei_Darussalam">
+        <rdf:type rdf:resource="&www;movieontology.owl#Southeastern_Asia"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Captain_Benjamin_L_Willard -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Captain_Benjamin_L_Willard">
+        <hasName rdf:datatype="&xsd;string">Benjamin Willard</hasName>
+        <hasName rdf:datatype="&xsd;string">Captain Benjamin L Willard</hasName>
+        <hasName rdf:datatype="&xsd;string">Captain Benjamin Willard</hasName>
+        <hasName rdf:datatype="&xsd;string">Captain Willard</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Chief_Bromden -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Chief_Bromden">
+        <hasName>Chief Bromden</hasName>
+        <hasName>Chief</hasName>
+        <hasName>The Chief</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Colonel_Walter_E_Kurtz -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Colonel_Walter_E_Kurtz">
+        <rdf:type rdf:resource="&www;movieontology.owl#Role"/>
+        <hasName rdf:datatype="&xsd;string">Colonel Kurtz</hasName>
+        <hasName rdf:datatype="&xsd;string">Colonel Walter E Kurtz</hasName>
+        <hasName rdf:datatype="&xsd;string">Colonel Walter Kurtz</hasName>
+        <isRoleIn rdf:resource="&www;movieontology.owl#Apocalypse_Now"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Color -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Color">
+        <rdf:type rdf:resource="&www;movieontology.owl#Colorinfo"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Comedy -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Comedy">
+        <rdf:type rdf:resource="&www;movieontology.owl#Fun"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Crime -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Crime">
+        <rdf:type rdf:resource="&www;movieontology.owl#Logical_Thrilling"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Danny_DeVito -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Danny_DeVito">
+        <hasName>Danny DeVito</hasName>
+        <playedRole rdf:resource="&www;movieontology.owl#Martini"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Documentary -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Documentary">
+        <rdf:type rdf:resource="&www;movieontology.owl#Documentarial_Information"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Drama -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Drama">
+        <rdf:type rdf:resource="&www;movieontology.owl#Heavy_Sensible"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Family -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Family">
+        <rdf:type rdf:resource="&www;movieontology.owl#Kids"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Fantasy -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Fantasy">
+        <rdf:type rdf:resource="&www;movieontology.owl#SciFi_and_Fantasy"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Film-Noir -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Film-Noir">
+        <rdf:type rdf:resource="&www;movieontology.owl#Heavy_Sensible"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Game-Show -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Game-Show">
+        <rdf:type rdf:resource="&www;movieontology.owl#TV-Entertainment"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Golden_Globe_Award -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Golden_Globe_Award">
+        <rdf:type rdf:resource="&www;movieontology.owl#Award"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#History -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#History">
+        <rdf:type rdf:resource="&www;movieontology.owl#Historical_Information"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Horror -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Horror">
+        <rdf:type rdf:resource="&www;movieontology.owl#Thrilling"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Jack_Nicholson -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Jack_Nicholson">
+        <hasName>Jack Nicholson</hasName>
+        <playedRole rdf:resource="&www;movieontology.owl#RP_McMurphy"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Lawrence_Hauben -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Lawrence_Hauben">
+        <hasName>Lawrence Hauben</hasName>
+        <isWriterOf rdf:resource="&www;movieontology.owl#One_Flew_Over_the_Cuckoos_Nest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Louise_Fletcher -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Louise_Fletcher">
+        <rdf:type rdf:resource="&ontology;FemaleActor"/>
+        <hasName>Louise Fletcher</hasName>
+        <playedRole rdf:resource="&www;movieontology.owl#Nurse_Ratched"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Marlon_Brando -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Marlon_Brando">
+        <rdf:type rdf:resource="&ontology;MaleActor"/>
+        <hasName rdf:datatype="&xsd;string">Marlon Brando</hasName>
+        <isMaleActorIn rdf:resource="&www;movieontology.owl#Apocalypse_Now"/>
+        <playedRole rdf:resource="&www;movieontology.owl#Colonel_Walter_E_Kurtz"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Martin_Sheen -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Martin_Sheen">
+        <rdf:type rdf:resource="&ontology;Actor"/>
+        <rdf:type rdf:resource="&ontology;MaleActor"/>
+        <hasName rdf:datatype="&xsd;string">Martin Sheen</hasName>
+        <playedRole rdf:resource="&www;movieontology.owl#Captain_Benjamin_L_Willard"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Martini -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Martini">
+        <hasName>Martini</hasName>
+        <isRoleIn rdf:resource="&www;movieontology.owl#One_Flew_Over_the_Cuckoos_Nest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Michael_Douglas -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Michael_Douglas">
+        <hasName>Michael Douglas</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Milos_Forman -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Milos_Forman">
+        <hasName>Milos Forman</hasName>
+        <isDirectorOf rdf:resource="&www;movieontology.owl#One_Flew_Over_the_Cuckoos_Nest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Miscellaneous_Award -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Miscellaneous_Award">
+        <rdf:type rdf:resource="&www;movieontology.owl#Award"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Music -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Music">
+        <rdf:type rdf:resource="&www;movieontology.owl#Musical_Entertainment"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Musical -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Musical">
+        <rdf:type rdf:resource="&www;movieontology.owl#Musical_Entertainment"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Mystery -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Mystery">
+        <rdf:type rdf:resource="&www;movieontology.owl#Sensible_Thrilling"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Netflix.com_retailer -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Netflix.com_retailer">
+        <rdf:type rdf:resource="&www;movieontology.owl#Online_retailer"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#News -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#News">
+        <rdf:type rdf:resource="&www;movieontology.owl#Info-TV"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Nurse_Ratched -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Nurse_Ratched">
+        <hasName>Nurse Ratched</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#One_Flew_Over_the_Cuckoos_Nest -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#One_Flew_Over_the_Cuckoos_Nest">
+        <rdf:type rdf:resource="&www;Movie"/>
+        <hasMaleActor rdf:resource="&www;movieontology.owl#Jack_Nicholson"/>
+        <hasProducer rdf:resource="&www;movieontology.owl#Michael_Douglas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Oscar_Award -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Oscar_Award">
+        <rdf:type rdf:resource="&www;movieontology.owl#Award"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Primetime_Emmy_Award -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Primetime_Emmy_Award">
+        <rdf:type rdf:resource="&www;movieontology.owl#Award"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Qatar -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Qatar">
+        <rdf:type rdf:resource="&www;movieontology.owl#Western_Asia"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#RP_McMurphy -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#RP_McMurphy">
+        <hasName>McMurphy</hasName>
+        <hasName>R.P. McMurphy</hasName>
+        <hasName>RP McMurphy</hasName>
+        <isRoleIn rdf:resource="&www;movieontology.owl#One_Flew_Over_the_Cuckoos_Nest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Reality-TV -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Reality-TV">
+        <rdf:type rdf:resource="&www;movieontology.owl#TV-Entertainment"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Reunion -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Reunion">
+        <rdf:type rdf:resource="&www;movieontology.owl#Eastern_Africa"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Romance -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Romance">
+        <rdf:type rdf:resource="&www;movieontology.owl#Love"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#RottenTomatoes.com_retailer -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#RottenTomatoes.com_retailer">
+        <rdf:type rdf:resource="&www;movieontology.owl#Online_retailer"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Sci-Fi -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Sci-Fi">
+        <rdf:type rdf:resource="&www;movieontology.owl#SciFi_and_Fantasy"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Short -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Short">
+        <rdf:type rdf:resource="&www;movieontology.owl#Genre"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Sport -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Sport">
+        <rdf:type rdf:resource="&www;movieontology.owl#Entertaining_Information"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Svalbard_and_Jan_Mayen_Islands -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Svalbard_and_Jan_Mayen_Islands">
+        <rdf:type rdf:resource="&www;movieontology.owl#Northern_Europe"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Thriller -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Thriller">
+        <rdf:type rdf:resource="&www;movieontology.owl#Sensible_Thrilling"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#War -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#War">
+        <rdf:type rdf:resource="&www;movieontology.owl#Brute_Action"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Western -->
+
+    <owl:Thing rdf:about="&www;movieontology.owl#Western">
+        <rdf:type rdf:resource="&www;movieontology.owl#Old_Action"/>
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Will_Sampson -->
+
+    <owl:NamedIndividual rdf:about="&www;movieontology.owl#Will_Sampson">
+        <hasName>Will Sampson</hasName>
+        <playedRole rdf:resource="&www;movieontology.owl#Chief_Bromden"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Central_Asia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Eastern_Asia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Southeastern_Asia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Southern_Asia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Western_Asia"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Amazon.com_retailer"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Blockbuster.com_retailer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Blockbuster.com_retailer"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Netflix.com_retailer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Blockbuster.com_retailer"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#RottenTomatoes.com_retailer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Amazon.com_retailer"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Netflix.com_retailer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Netflix.com_retailer"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#RottenTomatoes.com_retailer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Caribbean"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#LatinAmerica"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Northern_America"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Amazon.com_retailer"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#RottenTomatoes.com_retailer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontology;Language"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Colorinfo"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Sound_Mix"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Africa"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#America"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Asia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Europe"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Oceania"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Eastern_Africa"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Middle_Africa"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Northern_Africa"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Southern_Africa"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Western_Africa"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Eastern_Europe"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Northern_Europe"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Southern_Europe"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Western_Europe"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&www;movieontology.owl#Australia_and_New_Zealand"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Melanesia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Micronesia"/>
+            <rdf:Description rdf:about="&www;movieontology.owl#Polynesia"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+

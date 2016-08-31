@@ -1,0 +1,784 @@
+@prefix :        <http://dbpedia.org/ontology/> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dpont:   <http://dbpedia.org/ontology/> .
+@prefix mo:      <http://www.movieontology.org/2009/11/09/movieontology.owl#> .
+@prefix owl2xml:  <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix page:    <http://dbpedia.org/page/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix www:     <http://www.movieontology.org/2009/11/09/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+mo:One_Flew_Over_the_Cuckoos_Nest
+      a       owl:NamedIndividual , www:Movie ;
+      mo:belongsToGenre mo:Drama ;
+      mo:hasDirector mo:Milos_Forman ;
+      mo:hasFemaleActor mo:Louise_Fletcher ;
+      mo:hasMaleActor mo:Will_Sampson , mo:Jack_Nicholson , mo:Danny_DeVito , mo:Brad_Dourif ;
+      mo:hasRole mo:Chief_Bromden , mo:Nurse_Ratched , mo:Billy_Bibbit ;
+      mo:hasWriter mo:Bo_Goldman , mo:Lawrence_Hauben ;
+      mo:releasedate "1975-11-21"^^xsd:date ;
+      mo:title "One Flew Over the Cuckoo's Nest"^^xsd:string .
+
+mo:History
+      a       owl:Thing , owl:NamedIndividual , mo:Historical_Information .
+
+mo:Black_and_White
+      a       owl:Thing , owl:NamedIndividual .
+
+mo:War
+      a       owl:Thing , owl:NamedIndividual , mo:Brute_Action .
+
+mo:RP_McMurphy
+      a       owl:NamedIndividual ;
+      www:hasName "McMurphy" , "R.P. McMurphy" , "RP McMurphy" ;
+      www:isRoleIn mo:One_Flew_Over_the_Cuckoos_Nest .
+
+mo:Documentary
+      a       owl:Thing , owl:NamedIndividual , mo:Documentarial_Information .
+
+mo:Musical_Artist
+      a       owl:Class ;
+      rdfs:subClassOf mo:Person .
+
+mo:TV-Entertainment
+      a       owl:Class ;
+      rdfs:subClassOf mo:Experience .
+
+mo:Romance
+      a       owl:Thing , owl:NamedIndividual , mo:Love .
+
+mo:Intelectual_Entertainment
+      a       owl:Class ;
+      rdfs:subClassOf mo:Experience .
+
+mo:Primetime_Emmy_Award
+      a       owl:Thing , owl:NamedIndividual , mo:Award .
+
+mo:John_Foreman
+      mo:hasName "John Foreman"^^xsd:string .
+
+mo:Karen_Blixen
+      a       mo:Role , owl:NamedIndividual .
+
+mo:Thrilling
+      a       owl:Class ;
+      rdfs:subClassOf mo:Imaginational_Entertainment .
+
+mo:isComposerIn
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Musical_Artist ;
+      rdfs:range www:Movie .
+
+mo:Chief_Bromden
+      a       owl:NamedIndividual ;
+      mo:hasName "Chief Bromden"^^xsd:string .
+
+mo:Bo_Goldman
+      a       owl:NamedIndividual ;
+      www:hasName "Bo Goldman" ;
+      mo:hasName "Bo Goldman"^^xsd:string .
+
+mo:isFilmLocationOf
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Place ;
+      rdfs:range www:Movie ;
+      owl:inverseOf mo:hasFilmLocation .
+
+mo:Meryl_Streep
+      a       owl:NamedIndividual , mo:FemaleActor .
+
+mo:MaleActor
+      a       owl:Class ;
+      rdfs:subClassOf mo:Actor .
+
+mo:hasMaleActor
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:MaleActor ;
+      owl:inverseOf mo:isMaleActorIn .
+
+mo:Brad_Dourif
+      a       owl:NamedIndividual ;
+      mo:hasName "Brad Dourif"^^xsd:string ;
+      mo:playedRole mo:Billy_Bibbit .
+
+mo:Documentarial_Information
+      a       owl:Class ;
+      rdfs:subClassOf mo:Special-Info .
+
+mo:Place
+      a       owl:Class .
+
+mo:hasEditor
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Editor ;
+      owl:inverseOf mo:isEditorIn .
+
+mo:Irene_Walker
+      mo:hasName "Irene Walker"^^xsd:string .
+
+mo:Michael_Douglas
+      a       mo:Producer , owl:NamedIndividual ;
+      mo:hasName "Michael Douglas"^^xsd:string ;
+      mo:isProducerOf mo:One_Flew_Over_the_Cuckoos_Nest .
+
+mo:Information
+      a       owl:Class ;
+      rdfs:subClassOf mo:Genre .
+
+mo:Short
+      a       owl:Thing , owl:NamedIndividual , mo:Genre .
+
+mo:Award
+      a       owl:Class .
+
+mo:Music
+      a       mo:Musical_Entertainment , owl:Thing , owl:NamedIndividual .
+
+mo:Martin_Sheen
+      a       owl:NamedIndividual , mo:Actor , mo:MaleActor ;
+      mo:hasName "Martin Sheen" ;
+      mo:playedRole mo:Queenan , mo:Captain_Benjamin_L_Willard .
+
+mo:nominatedFor
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Award .
+
+mo:Angelica_Huston
+      mo:hasName "Angelica Huston"^^xsd:string ;
+      mo:playsRole mo:Maerose_Prizzi .
+
+mo:Sci-Fi
+      a       owl:Thing , owl:NamedIndividual , mo:SciFi_and_Fantasy .
+
+mo:isMaleActorIn
+      a       owl:ObjectProperty ;
+      rdfs:subPropertyOf mo:isActorIn .
+
+mo:Editor
+      a       owl:Class ;
+      rdfs:subClassOf mo:Person .
+
+mo:Sensible_Thrilling
+      a       owl:Class ;
+      rdfs:subClassOf mo:Thrilling .
+
+mo:Name
+      a       owl:Class .
+
+mo:hasReleaseDate
+      a       owl:ObjectProperty .
+
+mo:Animation
+      a       owl:Thing , owl:NamedIndividual , mo:Fun .
+
+mo:Western
+      a       owl:Thing , owl:NamedIndividual , mo:Old_Action .
+
+mo:releasedate
+      a       owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range xsd:date .
+
+mo:Louise_Fletcher
+      a       owl:NamedIndividual ;
+      www:hasName "Louise Fletcher" ;
+      mo:hasName "Louise Fletcher"^^xsd:string ;
+      mo:playedRole mo:Nurse_Ratched ;
+      www:playedRole mo:Nurse_Ratched .
+
+www:isWriterOf
+      a       owl:AnnotationProperty .
+
+mo:Robert_Duvall
+      a       owl:NamedIndividual ;
+      mo:hasName "Robert Duvall"^^xsd:string ;
+      mo:playedRole mo:Lieutenant_Colonel_Bill_Kilgore .
+
+mo:Experience
+      a       owl:Class ;
+      rdfs:subClassOf mo:Entertainment .
+
+mo:Love
+      a       owl:Class ;
+      rdfs:subClassOf mo:Sensible .
+
+mo:Drama
+      a       mo:Heavy_Sensible , owl:Thing , owl:NamedIndividual .
+
+mo:Adult
+      a       mo:Porn , owl:Thing , owl:NamedIndividual .
+
+mo:Genre
+      a       owl:Class .
+
+mo:Fast-Info
+      a       owl:Class ;
+      rdfs:subClassOf mo:Information .
+
+mo:Logical_Thrilling
+      a       owl:Class ;
+      rdfs:subClassOf mo:Thrilling .
+
+mo:Will_Sampson
+      a       owl:NamedIndividual ;
+      mo:hasName "Will Sampson"^^xsd:string ;
+      mo:playedRole mo:Chief_Bromden .
+
+mo:Role
+      a       owl:Class .
+
+mo:isDirectorOf
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Film_Director ;
+      rdfs:range www:Movie .
+
+mo:Game-Show
+      a       owl:Thing , owl:NamedIndividual , mo:TV-Entertainment .
+
+mo:Dennis_Hopper
+      a       owl:NamedIndividual ;
+      mo:hasName "Dennis Hopper"^^xsd:string ;
+      mo:playedRole mo:Photojournalist .
+
+mo:Golden_Globe_Award
+      a       owl:Thing , owl:NamedIndividual , mo:Award .
+
+mo:Alan_Mak
+      a       owl:NamedIndividual ;
+      mo:hasName "Alan Mak"^^xsd:string .
+
+www:hasFemaleActor
+      a       owl:AnnotationProperty .
+
+mo:Francis_Ford_Copolla
+      a       owl:NamedIndividual ;
+      mo:hasName "Francis Ford Copolla"^^xsd:string .
+
+mo:Entertaining_Information
+      a       owl:Class ;
+      rdfs:subClassOf mo:Entertainment .
+
+mo:isRoleIn
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Role ;
+      rdfs:range www:Movie .
+
+mo:isReleasingCountryOf
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Country ;
+      rdfs:range www:Movie .
+
+mo:hasCostumeDesigner
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Costume_Designer ;
+      owl:inverseOf mo:isCostumeDesignerIn .
+
+mo:isFemaleActorIn
+      a       owl:ObjectProperty ;
+      rdfs:subPropertyOf mo:isActorIn ;
+      owl:propertyDisjointWith
+              mo:isMaleActorIn .
+
+mo:Country
+      a       owl:Class ;
+      rdfs:isDefinedBy dpont: .
+
+mo:Marlon_Brando
+      a       owl:NamedIndividual , mo:MaleActor ;
+      mo:hasName "Marlon Brando"^^xsd:string ;
+      mo:playedRole mo:Colonel_Walter_E_Kurtz .
+
+mo:Maerose_Prizzi
+      mo:hasName "Maerose Prizzi"^^xsd:string .
+
+mo:Sport
+      a       owl:Thing , owl:NamedIndividual , mo:Entertaining_Information .
+
+mo:Lawrence_Hauben
+      a       owl:NamedIndividual ;
+      www:hasName "Lawrence Hauben" ;
+      mo:hasName "Lawrence Hauben"^^xsd:string .
+
+mo:Captain_Benjamin_L_Willard
+      a       owl:NamedIndividual ;
+      mo:hasName "Captain Benjamin Willard"^^xsd:string , "Benjamin Willard"^^xsd:string , "Captain Benjamin L. Willard"^^xsd:string , "Captain Willard"^^xsd:string .
+
+mo:BAFTA_Film_Award
+      a       owl:Thing , owl:NamedIndividual , mo:Award .
+
+mo:Sensible
+      a       owl:Class ;
+      rdfs:subClassOf mo:Entertainment .
+
+mo:Entertainment
+      a       owl:Class ;
+      rdfs:subClassOf mo:Genre .
+
+www:hasName
+      a       owl:AnnotationProperty .
+
+mo:Oscar_Award
+      a       owl:Thing , owl:NamedIndividual , mo:Award .
+
+mo:Musical_Entertainment
+      a       owl:Class ;
+      rdfs:subClassOf mo:Intelectual_Entertainment .
+
+mo:isAwardOf
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Award ;
+      rdfs:range www:Movie ;
+      owl:inverseOf mo:isAwardedWith .
+
+mo:Out_of_Africa
+      a       owl:NamedIndividual , www:Movie ;
+      www:hasFemaleActor mo:Meryl_Streep .
+
+mo:DPB_Marlon_Brando
+      a       owl:NamedIndividual ;
+      =       mo:Marlon_Brando .
+
+mo:Miscellaneous_Award
+      a       owl:Thing , owl:NamedIndividual , mo:Award .
+
+mo:Film-Noir
+      a       mo:Heavy_Sensible , owl:Thing , owl:NamedIndividual .
+
+mo:isWriterOf
+      a       owl:ObjectProperty .
+
+mo:isGenreOf
+      a       owl:ObjectProperty ;
+      owl:inverseOf mo:belongsToGenre .
+
+mo:Musical
+      a       mo:Musical_Entertainment , owl:Thing , owl:NamedIndividual .
+
+mo:Queenan
+      a       mo:Role , owl:NamedIndividual ;
+      mo:hasName "Queenan" .
+
+mo:Billy
+      a       mo:Role , owl:NamedIndividual .
+
+mo:News
+      a       owl:Thing , owl:NamedIndividual , mo:Info-TV .
+
+mo:Danny_DeVito
+      a       owl:NamedIndividual , mo:Actor , mo:MaleActor ;
+      www:hasName "Danny DeVito" ;
+      mo:hasName "Danny DeVito"^^xsd:string ;
+      mo:playedRole mo:Martini ;
+      www:playedRole mo:Martini .
+
+mo:Historical_Information
+      a       owl:Class ;
+      rdfs:subClassOf mo:Documentarial_Information .
+
+mo:Imaginational_Entertainment
+      a       owl:Class ;
+      rdfs:subClassOf mo:Entertainment .
+
+mo:Actionreach
+      a       owl:Class ;
+      rdfs:subClassOf mo:Entertainment .
+
+mo:Reality-TV
+      a       owl:Thing , owl:NamedIndividual , mo:TV-Entertainment .
+
+mo:isEditorIn
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Editor ;
+      rdfs:range www:Movie .
+
+mo:Producer
+      a       owl:Class ;
+      rdfs:subClassOf mo:Person .
+
+mo:Charlie_Partana
+      mo:hasName "Charlie Partana"^^xsd:string .
+
+mo:   a       owl:Ontology ;
+      dc:contributor "Amancio Bouza"^^xsd:string ;
+      dc:creator "Amancio Bouza"^^xsd:string ;
+      dc:date "20.01.2010"^^xsd:string ;
+      dc:description "MO - Movie ontology"^^xsd:string ;
+      dc:publisher "Amancio Bouza"^^xsd:string ;
+      owl:versionInfo "Version 3.8"@en .
+
+mo:John_Huston
+      mo:hasName "John Huston"^^xsd:string .
+
+mo:imdbrating
+      a       owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range xsd:double .
+
+mo:Brute_Action
+      a       owl:Class ;
+      rdfs:subClassOf mo:Actionreach .
+
+mo:belongsToGenre
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Genre .
+
+mo:Old_Action
+      a       owl:Class ;
+      rdfs:subClassOf mo:Actionreach .
+
+mo:Dignam
+      a       mo:Role , owl:NamedIndividual ;
+      mo:hasName "Dignam" .
+
+mo:Info-TV
+      a       owl:Class ;
+      rdfs:subClassOf mo:Fast-Info .
+
+mo:Mark_Wahlberg
+      a       owl:NamedIndividual , mo:Actor , mo:MaleActor , mo:Person ;
+      mo:hasName "Mark Wahlberg" ;
+      mo:hasWriter mo:Alan_Mak .
+
+mo:Porn
+      a       owl:Class ;
+      rdfs:subClassOf mo:Experience .
+
+mo:Nurse_Ratched
+      a       owl:NamedIndividual ;
+      mo:hasName "Nurse Ratched"^^xsd:string .
+
+mo:Comedy
+      a       owl:Thing , owl:NamedIndividual , mo:Fun .
+
+mo:Mystery
+      a       owl:Thing , mo:Sensible_Thrilling , owl:NamedIndividual .
+
+mo:Martin_Scorsese
+      a       owl:NamedIndividual ;
+      mo:hasName "Martin Scorsese"^^xsd:string .
+
+mo:hasReleasingCountry
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Country ;
+      owl:inverseOf mo:isReleasingCountryOf .
+
+mo:Prizzis_Honor
+      mo:hasDirector mo:John_Huston ;
+      mo:hasFemaleActor mo:Kathleen_Turner , mo:Angelica_Huston ;
+      mo:hasMaleActor mo:Jack_Nicholson ;
+      mo:hasProducer mo:John_Foreman ;
+      mo:hasRole mo:Charlie_Partana , mo:Maerose_Prizzi , mo:Irene_Walker ;
+      mo:title "Prizzi's Honour"^^xsd:string .
+
+mo:Action
+      a       owl:Thing , owl:NamedIndividual , mo:Brute_Action .
+
+www:playedRole
+      a       owl:AnnotationProperty .
+
+mo:isAwardedWith
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Award .
+
+mo:Martini
+      a       owl:NamedIndividual ;
+      www:hasName "Martini" ;
+      www:isRoleIn mo:One_Flew_Over_the_Cuckoos_Nest .
+
+mo:Thriller
+      a       owl:Thing , mo:Sensible_Thrilling , owl:NamedIndividual .
+
+mo:Lieutenant_Colonel_Bill_Kilgore
+      a       owl:NamedIndividual ;
+      mo:hasName "Lieutenant Colonel Bill Kilgore"^^xsd:string .
+
+mo:hasName
+      a       owl:DatatypeProperty ;
+      rdfs:domain mo:Person ;
+      rdfs:range xsd:string .
+
+mo:hasBeenDirectedBy
+      a       owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty .
+
+mo:Jack_Nicholson
+      a       owl:NamedIndividual , mo:Actor , mo:MaleActor ;
+      mo:hasName "Jack Nicholson"^^xsd:string ;
+      mo:playedRole mo:RP_McMurphy ;
+      mo:playsRole mo:Charlie_Partana .
+
+mo:hasFilmLocation
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Place .
+
+mo:hasComposer
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Musical_Artist ;
+      owl:inverseOf mo:isComposerIn .
+
+mo:Colonel_Walter_E_Kurtz
+      a       mo:Role , owl:NamedIndividual ;
+      mo:hasName "Colonel Walter Kurtz"^^xsd:string , "Colonel Walter E Kurtz"^^xsd:string , "Colonel Kurtz"^^xsd:string .
+
+mo:Crime
+      a       mo:Logical_Thrilling , owl:Thing , owl:NamedIndividual .
+
+mo:Family
+      a       owl:Thing , owl:NamedIndividual , mo:Kids .
+
+mo:isCertificationOf
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Certification ;
+      rdfs:range www:Movie ;
+      owl:inverseOf mo:isCertifiedWith .
+
+mo:William_Monahan
+      a       owl:NamedIndividual ;
+      mo:hasName "William Monahan"^^xsd:string .
+
+mo:runtime
+      a       owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range xsd:int .
+
+mo:Heavy_Sensible
+      a       owl:Class ;
+      rdfs:subClassOf mo:Sensible .
+
+mo:Madolyn
+      a       owl:NamedIndividual ;
+      mo:hasName "Madolyn"^^xsd:string .
+
+owl:Thing
+      a       owl:Class .
+
+mo:Adventure
+      a       owl:Thing , owl:NamedIndividual , mo:Imaginational_Entertainment , mo:Actionreach .
+
+mo:Biography
+      a       owl:Thing , owl:NamedIndividual , mo:Documentarial_Information .
+
+mo:Milos_Forman
+      a       owl:NamedIndividual , mo:Film_Director ;
+      mo:hasName "Milos Forman"^^xsd:string ;
+      mo:isDirectorOf mo:One_Flew_Over_the_Cuckoos_Nest .
+
+mo:Kids
+      a       owl:Class ;
+      rdfs:subClassOf mo:SocialActive .
+
+mo:Brad_Pitt
+      a       owl:NamedIndividual ;
+      mo:hasName "Brad Pitt"^^xsd:string .
+
+mo:Fantasy
+      a       owl:Thing , owl:NamedIndividual , mo:SciFi_and_Fantasy .
+
+mo:SocialActive
+      a       owl:Class ;
+      rdfs:subClassOf mo:Entertainment .
+
+mo:hasRole
+      a       owl:ObjectProperty .
+
+mo:isProducerOf
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Producer .
+
+mo:playedRole
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Actor ;
+      rdfs:range mo:Role .
+
+mo:isCostumeDesignerIn
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Costume_Designer ;
+      rdfs:range www:Movie .
+
+mo:The_Departed
+      a       owl:NamedIndividual , www:Movie ;
+      mo:belongsToGenre mo:Thriller , mo:Drama , mo:Crime ;
+      mo:hasDirector mo:Martin_Scorsese ;
+      mo:hasFemaleActor mo:Vera_Farmiga ;
+      mo:hasMaleActor mo:Mark_Wahlberg , mo:Matt_Damon , mo:Jack_Nicholson , mo:Martin_Sheen ;
+      mo:hasProducer mo:Brad_Grey , mo:Brad_Pitt ;
+      mo:hasRole mo:Colin_Sullivan , mo:Madolyn , mo:Queenan , mo:Billy , mo:Dignam ;
+      mo:hasWriter mo:William_Monahan ;
+      mo:releasedate "2006-10-06"^^xsd:date ;
+      mo:title "The Departed"^^xsd:string .
+
+mo:Costume_Designer
+      a       owl:Class ;
+      rdfs:subClassOf mo:Person .
+
+mo:hasFemaleActor
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      owl:inverseOf mo:isFemaleActorIn ;
+      owl:propertyDisjointWith
+              mo:hasMaleActor .
+
+mo:isActorIn
+      a       owl:ObjectProperty ;
+      rdfs:domain mo:Actor ;
+      rdfs:range www:Movie ;
+      rdfs:subPropertyOf mo:isActorIn .
+
+mo:John_Milius
+      a       owl:NamedIndividual ;
+      mo:hasName "John Milius"^^xsd:string .
+
+mo:Kathleen_Turner
+      mo:hasName "Kathleen_Turner"^^xsd:string ;
+      mo:playsRole mo:Irene_Walker .
+
+mo:Special-Info
+      a       owl:Class ;
+      rdfs:subClassOf mo:Information .
+
+mo:Color
+      a       owl:Thing , owl:NamedIndividual .
+
+mo:Person
+      a       owl:Class ;
+      rdfs:isDefinedBy dpont: .
+
+www:Movie
+      a       owl:Class .
+
+<http://www.movieontology.org/2009/11/09/movieontology.owl#Netflix.com_retailer>
+      a       owl:Thing , owl:NamedIndividual .
+
+mo:Photojournalist
+      a       owl:NamedIndividual ;
+      mo:hasName "Photojournalist"^^xsd:string .
+
+mo:Colin_Sullivan
+      a       mo:Role , owl:NamedIndividual ;
+      mo:hasName "Colin Sullivan" .
+
+mo:Matt_Damon
+      a       owl:NamedIndividual , mo:Actor , mo:MaleActor , mo:Person ;
+      mo:hasName "Colin Sullivan" .
+
+mo:Brad_Grey
+      a       owl:NamedIndividual ;
+      mo:hasName """Brad Grey
+"""^^xsd:string .
+
+mo:hasDirector
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Film_Director ;
+      owl:inverseOf mo:isDirectorOf .
+
+mo:Brunei_Darussalam
+      a       owl:Thing , owl:NamedIndividual .
+
+www:belongsToGenre
+      a       owl:AnnotationProperty .
+
+mo:Film_Director
+      a       owl:Class ;
+      rdfs:subClassOf mo:Person .
+
+mo:Vera_Farmiga
+      a       owl:NamedIndividual ;
+      mo:hasName "Vera Farmiga"^^xsd:string ;
+      mo:playedRole mo:Madolyn .
+
+mo:FemaleActor
+      a       owl:Class ;
+      rdfs:subClassOf mo:Actor ;
+      owl:disjointWith mo:MaleActor .
+
+mo:SciFi_and_Fantasy
+      a       owl:Class ;
+      rdfs:subClassOf mo:Imaginational_Entertainment .
+
+mo:Certification
+      a       owl:Class .
+
+mo:Billy_Bibbit
+      a       owl:NamedIndividual ;
+      mo:hasName "Billy Bibbit"^^xsd:string .
+
+mo:Language
+      a       owl:Class ;
+      rdfs:isDefinedBy dpont: .
+
+mo:Fun
+      a       owl:Class ;
+      rdfs:subClassOf mo:SocialActive .
+
+mo:Apocalypse_Now
+      a       owl:NamedIndividual , www:Movie ;
+      mo:belongsToGenre mo:War , mo:Drama ;
+      mo:hasDirector mo:Francis_Ford_Copolla ;
+      mo:hasMaleActor mo:Robert_Duvall , mo:Dennis_Hopper , mo:Martin_Sheen ;
+      mo:hasRole mo:Captain_Benjamin_L_Willard , mo:Colonel_Walter_E_Kurtz , mo:Photojournalist ;
+      mo:hasWriter mo:John_Milius , mo:Francis_Ford_Copolla ;
+      mo:playedRole mo:Lieutenant_Colonel_Bill_Kilgore ;
+      mo:releasedate "1979-08-15"^^xsd:date ;
+      mo:title "Apocalypse Now"^^xsd:string .
+
+mo:Horror
+      a       mo:Thrilling , owl:Thing , owl:NamedIndividual .
+
+mo:hasProducer
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Producer ;
+      owl:inverseOf mo:isProducerOf .
+
+xsd:date
+      a       rdfs:Datatype .
+
+mo:Leonardo_DiCaprio
+      a       owl:NamedIndividual , mo:Actor , mo:MaleActor , mo:Person ;
+      mo:hasName "Leonardo DiCaprio" ;
+      mo:playedRole mo:Billy .
+
+mo:isCertifiedWith
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Certification .
+
+mo:hasDirectedActor
+      a       owl:ObjectProperty .
+
+mo:Actor
+      a       owl:Class ;
+      rdfs:isDefinedBy dpont: ;
+      rdfs:subClassOf mo:Person .
+
+www:isRoleIn
+      a       owl:AnnotationProperty .
+
+mo:hasWriter
+      a       owl:ObjectProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range mo:Writer ;
+      owl:inverseOf mo:isWriterOf .
+
+mo:Writer
+      a       owl:Class ;
+      rdfs:isDefinedBy dpont: ;
+      rdfs:subClassOf mo:Person .
+
+mo:title
+      a       owl:DatatypeProperty ;
+      rdfs:domain www:Movie ;
+      rdfs:range xsd:string .
